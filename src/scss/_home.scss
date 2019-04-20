@@ -1,0 +1,51 @@
+$sectionPadding: 3rem;
+
+.main {
+  grid-area: main ;
+
+  .about-me {
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-areas: 
+    "about-me-meta about-me-image";
+    background-color: $secondary;
+    padding: $sectionPadding;
+
+    .meta {
+      grid-area: about-me-meta ;
+      .name {
+        font-size: 3rem;
+      }
+
+      .job {
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
+
+      .job-description {
+        font-weight: 300;
+      }
+    }
+
+    .profile-image {
+      display: inline-block;
+      height: 20vh;
+      //object-fit: unset;
+      grid-area: about-me-image ;
+    }
+  }
+
+  .what-i-do {
+    padding: $sectionPadding;
+  }
+
+  .testimonials {
+    padding: $sectionPadding;
+  }
+
+  .featured-projects {
+    padding: $sectionPadding;
+  }
+
+
+}
