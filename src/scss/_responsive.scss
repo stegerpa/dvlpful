@@ -1,7 +1,82 @@
 .wrapper {
   display: grid;
-  grid-template-columns: 18rem auto;
-  grid-template-rows: auto;
+  grid-template-rows: auto auto;
   grid-template-areas: 
+    "menu"
+    "main";
+}
+
+//Tablet / Laptop
+@media (min-width: 769px) {
+  .menu {
+    min-height: 100vh;
+
+    .nav-home {
+      @include visible;
+    }
+
+    .nav-profile-image {
+      @include visible;
+    }
+
+    .nav-bio {
+      @include visible;
+    }
+
+    .nav-social {
+      @include visible;
+    }
+
+    .nav-menu {
+      @include visible;
+    }
+  }
+
+  .wrapper {
+    grid-template-columns: 18rem auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
     "menu main";
+  }
+
+  .main {
+    .section-profile {
+      grid-template-areas: 
+      "aboutme-meta aboutme-image";
+      grid-template-columns: auto 200px;
+      
+    } 
+
+    .section-whatido .skills .skill {
+      &-icon {
+        font-size: 2.75rem;
+      }
+    }
+
+    .section-testimonials .testimonials {
+      @include column-grid(2);
+    }
+
+    .section-projects .projects .project {
+      @include column-grid(2);
+    }
+  }    
+}
+
+//Desktop
+@media (min-width: 992px) {
+  .main{
+    .section-profile {
+      grid-template-columns: auto 350px;
+    }
+
+    .section-whatido .skills .skill {
+      flex-basis: 20%;
+    }
+
+    .section-testimonials .testimonials {
+      @include column-grid(3);
+    }
+  }
+  
 }

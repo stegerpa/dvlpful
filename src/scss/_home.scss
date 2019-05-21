@@ -1,51 +1,154 @@
+//Variables
 $sectionPadding: 3rem;
 
 .main {
   grid-area: main ;
 
-  .about-me {
-    display: grid;
-    grid-template-columns: 200px auto;
-    grid-template-areas: 
-    "about-me-meta about-me-image";
-    background-color: $secondary;
-    padding: $sectionPadding;
+  .section {
+    &-profile {
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-areas: 
+      "aboutme-meta" 
+      "aboutme-image";
+      background-color: $secondary;
+      padding: $sectionPadding;
 
-    .meta {
-      grid-area: about-me-meta ;
-      .name {
-        font-size: 3rem;
+      .profile-bio {
+        grid-area: aboutme-meta ;
+        padding-right: 3rem;
+
+        &-name {
+          font-size: 3rem;
+        }
+
+        &-job {
+          font-size: 1.5rem;
+          font-weight: 300;
+        }
+
+        &-job-description {
+          font-weight: 300;
+        }
       }
-
-      .job {
-        font-size: 1.5rem;
-        font-weight: 300;
-      }
-
-      .job-description {
-        font-weight: 300;
+      
+      .profile-image {
+        height: fit-content;
+        grid-area: aboutme-image ;
       }
     }
 
-    .profile-image {
-      display: inline-block;
-      height: 20vh;
-      //object-fit: unset;
-      grid-area: about-me-image ;
+    &-whatido {
+      padding: $sectionPadding;
+
+      .skills {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        .skill {
+          @include column-grid(2);
+          flex-basis: 50%;
+          text-align: center;
+
+          &-icon {
+            font-size: 2rem;
+            line-height: 2;
+
+            &:hover {
+              @include animated;
+              color: var(--color);
+            }
+          }
+          
+          &-text {
+            text-align: left;
+            line-height: 2;
+          }
+        }
+      }
+    }
+
+    &-testimonials {
+      padding: $sectionPadding;
+
+      .testimonials {
+        @include column-grid(1);
+
+        .testimonial {
+          background-color: $secondary;
+          overflow: hidden;
+
+          .quote {
+            position: absolute;
+            margin: .5rem;
+            color: #fff;
+          }
+
+          &::before {
+            content: '';
+            line-height: 1;
+            position: absolute;
+            font-size: 4rem;
+
+            border-style: solid;
+            border-width: 3.5rem 3.5rem 0 0;
+            border-color: $primary transparent transparent transparent;
+            -webkit-transform: rotate(360deg);
+          }
+
+          &-quote {
+            margin: 1.5rem 3rem;
+          }
+
+          &-author {
+            font-size: .75rem;
+            margin: 0 3rem;
+          }
+
+          &-job {
+            font-size: .65rem;
+            margin: 0 3rem 1rem;
+          }
+        }
+      }
+    }
+
+    &-projects {
+      padding: $sectionPadding;
+
+      .projects {
+        @include column-grid(2);
+
+        .project {
+          @include row-grid(2);
+          @include hand;
+
+          
+
+          &-meta {
+            background-color: $secondary;
+            padding: 1rem 2rem;
+
+            &-description {
+              font-size: .85rem;
+            }
+
+            &-client {
+              font-size: .75rem;
+              color: $secondary-dark;
+            }
+
+          }
+
+          &:hover {
+            opacity: 0.8;
+            @include animated;
+          }
+        }
+      }
     }
   }
-
-  .what-i-do {
-    padding: $sectionPadding;
-  }
-
-  .testimonials {
-    padding: $sectionPadding;
-  }
-
-  .featured-projects {
-    padding: $sectionPadding;
-  }
-
-
 }

@@ -1,0 +1,31 @@
+@mixin column-grid($columns) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+}
+
+@mixin row-grid($rows) {
+  display: grid;
+  grid-template-rows: repeat($rows, 1fr);
+}
+
+@mixin full-grid($columns, $rows) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: repeat($rows, 1fr);
+}
+
+@mixin animated {
+  transition: 0.5s all;
+}
+
+@mixin hand {
+  cursor: pointer;
+}
+
+@mixin hidden {
+  display: none;
+}
+
+@mixin visible {
+  display: block;
+}

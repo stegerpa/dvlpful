@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, StaticQuery } from "gatsby"
 import GatsbyContentfulFluid from "gatsby-image";
+import { FaQuoteLeft } from 'react-icons/fa';
 
 import Layout from "../components/layout"
 
@@ -9,18 +10,24 @@ const IndexPage = () => (
     query={
       graphql`
         query {
-          allContentfulHomepageTexts {
-            nodes {
-              firstName
-              lastName
-              jobTitle
-              jobDescription {jobDescription}
-              profileImage {
-                fluid {
-                  ...GatsbyContentfulFluid
-                }
+          contentfulHomepageTexts {
+            firstName
+            lastName
+            jobTitle
+            jobDescription {jobDescription}
+            profileImage {
+              fluid {
+                ...GatsbyContentfulFluid
               }
-              skillDescription {skillDescription}
+            }
+            skillDescription {skillDescription}
+          }
+          allContentfulSkills {
+            nodes{
+              id
+              title
+              icon
+              highlightColor
             }
           }
           allContentfulTestimonial {
@@ -31,39 +38,78 @@ const IndexPage = () => (
               jobTitle
             }
           }
+          allContentfulProject {
+            nodes {
+              id
+              title
+              shortDescription {
+                shortDescription
+              }
+              clientName
+              previewImage {
+                fluid {
+                  ...GatsbyContentfulFluid
+                }
+              }
+            }
+          }
         }
       `
     }
     render={data => (
       <Layout>
-        <section className="about-me">
-          <aside className="meta">
-            <h1 className="name">
-              {data.allContentfulHomepageTexts.nodes[0].firstName} {data.allContentfulHomepageTexts.nodes[0].lastName}
+        <section className="section-profile">
+          <aside className="profile-bio">
+            <h1 className="profile-bio-name">
+              {data.contentfulHomepageTexts.firstName} {data.contentfulHomepageTexts.lastName}
             </h1>
-            <h3 className="job">{data.allContentfulHomepageTexts.nodes[0].jobTitle}</h3>
-            <p className="job-description">{data.allContentfulHomepageTexts.nodes[0].jobDescription.jobDescription}</p>
+            <h3 className="profile-bio-job">{data.contentfulHomepageTexts.jobTitle}</h3>
+            <p className="profile-bio-description">{data.contentfulHomepageTexts.jobDescription.jobDescription}</p>
             <Link to="/portfolio" className="btn btn-primary">View Portfolio</Link>
             <Link to="/resume" className="btn btn-secondary">View Resume</Link>
           </aside>
-          <GatsbyContentfulFluid className="profile-image" fluid={data.allContentfulHomepageTexts.nodes[0].profileImage.fluid} />
+          <GatsbyContentfulFluid className="profile-image" fluid={data.contentfulHomepageTexts.profileImage.fluid} />
         </section>
-        <section className="what-i-do">
+        <section className="section-whatido">
           <h2 className="main-h2">What I do</h2>
-          {data.allContentfulHomepageTexts.nodes[0].skillDescription.skillDescription}
+          <p className="whatido-description">{data.contentfulHomepageTexts.skillDescription.skillDescription}</p>
+          <ul className="skills">
+            {data.allContentfulSkills.nodes.map((skill) => 
+              <li className="skill" key={skill.id}>
+                <span className={'skill-icon devicons '+skill.icon} style={{'--color': ' #'+skill.highlightColor}}></span>
+                <p className="skill-text">{skill.title}</p>
+              </li>
+            )}
+          </ul>
         </section>
-        <section className="testimonials">
+        <hr />
+        <section className="section-testimonials">
           <h2 className="main-h2">Testimonials</h2>
-          {data.allContentfulTestimonial.nodes.map((review) => 
-            <div className="testimonial-item" key="{review.id}">
-              <blockquote className="testimonial-quote">{review.content.content}</blockquote>
-              <p className="testimonial-author">{review.author}</p>
-              <p className="testimonial-job">{review.jobTitle}</p>
+          <div className="testimonials">
+          {data.allContentfulTestimonial.nodes.map((t) => 
+            <div className="testimonial" key="{t.id}">
+              <FaQuoteLeft className="quote" />
+              <blockquote className="testimonial-quote">{t.content.content}</blockquote>
+              <p className="testimonial-author">{t.author}</p>
+              <p className="testimonial-job">{t.jobTitle}</p>
             </div>
           )}
+          </div>
         </section>
-        <section className="featured-projects">
+        <section className="section-projects">
           <h2 className="main-h2">Featured Projects</h2>
+          <div className="projects">
+          {data.allContentfulProject.nodes.map((project) => 
+            <Link to={'/project/'+project.id} className="project" key={project.id}>
+              <GatsbyContentfulFluid className="project-image" fluid={project.previewImage.fluid} />
+              <div className="project-meta">
+                <h3 className="project-meta-title">{project.title}</h3>
+                <p className="project-meta-description">{project.shortDescription.shortDescription}</p>
+                <p className="project-meta-client">Client: {project.clientName}</p>
+              </div>
+            </Link>  
+          )}
+          </div>
         </section>
       </Layout>
     )}
