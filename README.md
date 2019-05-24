@@ -19,7 +19,14 @@ This Template is made by Patrick Steger for developers and is 100% free under th
 * Contentful recommended but not needed
 
 ## Contentful Backend
-It's recommended to use [Contentful](https://www.contentful.com) or another Headless CMS as backend. If you dont want to use a backend it's still possible to clear the GraphQL commands and use static texts or another backend.
+It's recommended to use [Contentful](https://www.contentful.com) or another Headless CMS as backend. If you dont want to use a backend it's still possible to clear the GraphQL commands and use static texts.
+
+## Installation
+* Clone Repo
+* Use `npm install`
+* Create gatsby-config.js (you can use gatsby-config.example.js as source) and copy your contentful spaceId + accessToken
+* A preview of my Contentful Data Model can you find [here](https://discovery.contentful.com/entries/by-content-type?delivery_access_token=5311a5a8486e4bf6b989e572e7fde0f669497a85396a0ccf265992b71cafde73&preview=false&preview_access_token=&space_id=12kd9ntaafga)
+* Run `gatsby develop` to start a local development server
 
 ## Credits
 * [React Icons](https://react-icons.netlify.com/#/)
