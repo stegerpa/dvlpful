@@ -4,6 +4,7 @@ import GatsbyContentfulFluid from "gatsby-image";
 import { FaQuoteLeft } from 'react-icons/fa';
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 const IndexPage = () => (
   <StaticQuery
