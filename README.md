@@ -2,7 +2,7 @@
 May 2019: This theme is under development and not usable right now. Please be patient a little more.
 
 ## Theme Details & Demo
-__Demo:__ https://psteger.com (not online yet)
+__Demo:__ (not online yet)
 
 Dvlpful is a free Theme designed to help developers promote their work. Its build using React + Gatsby as frontend and Contentful as headless CMS provider. The template comes with all of the source SCSS files included so the styling/colour can easiliy be customized to your taste.
 
