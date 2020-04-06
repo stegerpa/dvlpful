@@ -6,74 +6,74 @@ $sectionPadding: 3rem;
 
   .section {
     &-profile {
-      display: grid;
-      grid-template-rows: auto auto;
-      grid-template-areas: 
-      "aboutme-meta" 
-      "aboutme-image";
-      background-color: $secondary;
-      padding: $sectionPadding;
+      .profile {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+        "aboutme-meta"
+        "aboutme-image";
 
-      .profile-bio {
-        grid-area: aboutme-meta ;
-        padding-right: 3rem;
-
-        &-name {
-          font-size: 3rem;
+        .main-h2 {
+          border-left: 5px solid $primary;
+          padding-left: 1rem;
+          margin-bottom: 1.5rem;
+          font-size: 2rem;
         }
 
-        &-job {
-          font-size: 1.5rem;
-          font-weight: 300;
+        &-bio {
+          grid-area: aboutme-meta ;
+          //padding-right: 3rem;
+
+          &-name {
+            font-size: 3rem;
+          }
+
+          &-job {
+            font-size: 1.5rem;
+          }
+
+          &-description {
+            text-align: justify;
+          }
         }
 
-        &-job-description {
-          font-weight: 300;
+        &-image {
+          height: fit-content;
+          grid-area: aboutme-image ;
         }
-      }
-      
-      .profile-image {
-        height: fit-content;
-        grid-area: aboutme-image ;
       }
     }
 
     &-whatido {
-      padding: $sectionPadding;
-
       .skills {
         padding: 0;
-        margin: 0;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
+        @include column-grid(2);
 
         .skill {
           @include column-grid(2);
-          flex-basis: 50%;
           text-align: center;
 
           &-icon {
             font-size: 2rem;
             line-height: 2;
-
-            &:hover {
-              @include animated;
-              color: var(--color);
-            }
           }
-          
+
           &-text {
             text-align: left;
+            align-self: center;
             line-height: 2;
+          }
+
+          &:hover {
+            @include animated;
+
+            color: var(--color);
           }
         }
       }
     }
 
     &-testimonials {
-      padding: $sectionPadding;
-
       .testimonials {
         @include column-grid(1);
 
@@ -117,16 +117,16 @@ $sectionPadding: 3rem;
     }
 
     &-projects {
-      padding: $sectionPadding;
-
       .projects {
-        @include column-grid(2);
+        @include column-grid(1);
 
         .project {
-          @include row-grid(2);
-          @include hand;
+          margin: 10px 5px;
+          border: 1px solid #e5e5e5;
 
-          
+          &-image {
+            max-height: 125px;
+          }
 
           &-meta {
             background-color: $secondary;
@@ -144,11 +144,24 @@ $sectionPadding: 3rem;
           }
 
           &:hover {
-            opacity: 0.8;
             @include animated;
+            opacity: 0.8;
           }
         }
       }
+    }
+  }
+
+  .footer {
+    padding: 12px $sectionPadding;
+    text-align: right;
+
+    .seperator, a {
+      color: #a1a1a1;
+    }
+
+    a:hover {
+      color: #888888;
     }
   }
 }

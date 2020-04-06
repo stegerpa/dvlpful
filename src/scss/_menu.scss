@@ -1,37 +1,82 @@
 @import 'colors';
+@import 'mixins';
 
-.menu {
+.menu, .menu-content {
+  grid-area: menu;
   background-color: $primary;
   color: #fff;
-  grid-area: menu ;
-  text-align: center;
-  padding: 1rem;
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+  border: 0;
 
   a {
     color: #fff;
   }
+}
 
-  .nav-home {
-    @include hidden;
-    font-size: 1.5rem;
-    font-weight: 700;
+.menu {
+  .menu-btn,
+  .hamburger {
+    margin: 1rem;
   }
 
+  .menu-btn {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+
+    &:hover {
+      background-color: #2f2f2f;
+      cursor: pointer;
+    }
+  }
+
+  .hamburger {
+    display: inline-block;
+    width: 26px;
+    font-size: 27px;
+    line-height: 1;
+    padding: 0 8px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="rgb(255, 255, 255)"><rect y="0" width="100%" height="20%" rx="5%" ry="5%" /><rect y="40%" width="100%" height="20%" rx="5%" ry="5%" /><rect y="80%" width="100%" height="20%" rx="5%" ry="5%" /></svg>') center / 80% 80% no-repeat;
+
+    &:before {
+      content: "\000A0";
+    }
+  }
+
+  .nav-home {
+    font-size: 1.5rem;
+    font-weight: bold;
+    align-self: center;
+    flex-basis: calc(100% - 180px);
+    text-align: center;
+  }
+}
+
+.menu-content {
+  @include hidden;
+  top: 91px;
+
   .nav-profile-image {
-    //@include hidden;
-    margin: 2rem auto 1rem;
     border-radius: 50%;
-    max-width: 10em;
+    width: 100%;
+    margin: auto;
+    max-width: 128px;
   }
 
   .nav-bio {
-    @include hidden;
     font-size: 0.875rem;
-    margin-bottom: 2rem;
+    margin: 1rem;
+    text-align: center;
+  }
+
+  hr {
+    border-color:#3a3a3a;
   }
 
   .nav-social {
-    @include hidden;
     margin: 1rem auto;
     a {
       font-size: 1.5rem;
@@ -39,21 +84,41 @@
     }
   }
 
-  .nav-menu {
-    @include hidden;
+  .nav-menuitems {
     font-weight: bold;
     list-style: none;
     text-align: left;
-    margin: 1rem auto;
+    margin: 1.75rem -1rem;
+    padding: 0;
 
     .nav-item{
-      height: 3rem;
-      line-height: 3rem;
+      height: 3.7rem;
+      line-height: 3.7rem;
+      letter-spacing: 1px;
 
       a {
-        margin-left: 0.5rem;
+        font-weight: 200;
+        padding: 0 2rem 0 5rem;
+        display: block;
+        text-transform: uppercase;
+
+        .link-text {
+          padding-left: 1rem;
+        }
+
+        &:hover {
+          background-color: rgba(255,255,255,.08)
+        }
       }
     }
   }
 
+  &.menu-open {
+    @include visible;
+
+    .menu-content {
+      display: flex;
+      flex-flow: column;
+    }
+  }
 }

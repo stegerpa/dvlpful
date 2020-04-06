@@ -23,10 +23,11 @@ It's recommended to use [Contentful](https://www.contentful.com) or another Head
 
 ## Installation
 * Clone Repo
-* Use `npm install`
-* Create gatsby-config.js (you can use gatsby-config.example.js as source) and copy your contentful spaceId + accessToken
+* Run `npm install`
+* Run `npm run init`
+* Copy your contentful spaceId + accessToken to gatsby-config.js
 * A preview of my Contentful Data Model can you find [here](https://discovery.contentful.com/entries/by-content-type?delivery_access_token=5311a5a8486e4bf6b989e572e7fde0f669497a85396a0ccf265992b71cafde73&preview=false&preview_access_token=&space_id=12kd9ntaafga)
-* Run `gatsby develop` to start a local development server
+* Run `npx gatsby develop` to start a local development server
 
 ## Credits
 * [React Icons](https://react-icons.netlify.com/#/)

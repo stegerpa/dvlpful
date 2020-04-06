@@ -6,7 +6,7 @@ import Menu from "./menu";
 
 const Layout = ({ children }) => (
   <>
-    <div className="wrapper">
+    <div className="content">
       <Menu />
       <main className="main">{children}</main>
     </div>

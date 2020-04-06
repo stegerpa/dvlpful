@@ -3,19 +3,36 @@
 @import 'menu';
 @import 'home';
 @import 'devicons';
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
+@import 'pages/contact';
 
-@import 'responsive';
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
 
 html {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+
 body {
   margin: 0;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.section {
+  padding: $sectionPadding;
+}
+
+.section:first-of-type {
+  background-color: $secondary;
+}
+
+.container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
@@ -34,25 +51,33 @@ h1,h2,h3,h4,h5,h6 {
   padding: 0;
 }
 
-.main-h2 {
-  border-left: 5px solid $primary;
-  padding-left: 1rem;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
+h1 {
+  font-size: 2.25em;
 }
 
 .btn {
   @include hand;
+  @include animated;
+
   display: inline-block;
   background-color: #000;
-  padding: .375rem 1rem;
-  margin: 1rem .5rem 1rem 0;
-  font-weight: 600;
   color: #fff;
-  border-radius: .25rem;
-  line-height: 1.5;
-  vertical-align: middle;
+  border: 2px solid transparent;
+  overflow: hidden;
+  padding: 10px 20px;
+  margin: 0 .5rem 1rem 0;
+  font-weight: bold;
+  font-size: 15px;
   text-align: center;
+  line-height: 1.3;
+
+  &:hover {
+    background: #262626;
+  }
+
+  &[type="submit"] {
+    margin-top: 20px;
+  }
 }
 
 .btn-primary {
@@ -62,3 +87,53 @@ h1,h2,h3,h4,h5,h6 {
 .btn-secondary {
   background-color: $secondary-dark;
 }
+
+label {
+  display: block;
+  margin-top: 20px;
+  line-height: 2;
+  color: $secondary-dark;
+}
+
+form {
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .formfield {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px 14px;
+    padding-right: 38px;
+    font-size: 14px;
+    border: 1px solid rgba(0,0,0,.6);
+
+    &.error {
+      border-color: red;
+    }
+  }
+
+  .input-feedback {
+    position: absolute;
+    font-size: 14px;
+    color: red;
+  }
+}
+
+.notifications {
+  background-color: #f1f1f1;
+  padding: 14px;
+  border: 1px solid $secondary;
+
+  &.notification-success {
+    background-color: #dfffc9;
+  }
+
+  &.notification-error {
+    background-color: #ffbdba;
+  }
+}
+
+//Responsive has to stay at the end.
+@import 'responsive';

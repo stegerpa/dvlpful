@@ -1,35 +1,41 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "name": "codeout",
+  "description": "Portfolio project based on Gatsby, React & Contentful",
+  "version": "0.9.0",
+  "author": "Patrick Steger <ps@psteger.com>",
   "dependencies": {
-    "gatsby": "^2.7.1",
-    "gatsby-image": "^2.0.37",
-    "gatsby-plugin-manifest": "^2.0.28",
-    "gatsby-plugin-offline": "^2.0.25",
-    "gatsby-plugin-react-helmet": "^3.0.12",
+    "formik": "^2.1.4",
+    "gatsby": "^2.19.7",
+    "gatsby-image": "^2.2",
+    "gatsby-plugin-manifest": "^2.2",
+    "gatsby-plugin-offline": "^3.0",
+    "gatsby-plugin-react-helmet": "^3.1",
     "gatsby-plugin-sass": "^2.0.11",
-    "gatsby-plugin-sharp": "^2.0.32",
-    "gatsby-source-contentful": "^2.0.48",
-    "gatsby-source-filesystem": "^2.0.29",
-    "gatsby-transformer-sharp": "^2.1.17",
+    "gatsby-plugin-sharp": "^2.4",
+    "gatsby-source-contentful": "^2.1.86",
+    "gatsby-source-filesystem": "^2.1",
+    "gatsby-transformer-sharp": "^2.3",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.0",
-    "react-icons": "^3.5.0"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "react-icons": "^3.9.0"
   },
   "devDependencies": {
-    "prettier": "^1.16.4"
+    "prettier": "^1.19.1"
   },
   "keywords": [
-    "gatsby"
+    "developer",
+    "coder",
+    "portfolio",
+    "gatsby",
+    "react",
+    "contentful"
   ],
   "license": "MIT",
   "scripts": {
+    "init": "cp -n gatsby-config.example.js gatsby-config.js",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
@@ -39,9 +45,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/codeoutin/codeout"
   }
 }
